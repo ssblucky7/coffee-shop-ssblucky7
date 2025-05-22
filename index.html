@@ -8,60 +8,151 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <nav class="nav container">
-      <a href="#" class="nav-logo">
+  <header>
+    <nav>
+      <div class="logo">
         <img src="images/coffee_logo.png" alt="Coffee Logo">
-        <h2>Coffee</h2>
-      </a>
-
-      <button class="nav-toggle" id="navToggle">
+        <h1>Coffee</h1>
+      </div>
+      
+      <div class="menu-btn" id="menuBtn">
         <i class="bx bx-menu"></i>
-      </button>
+      </div>
 
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#" class="nav-link">Home</a></li>
-        <li><a href="#products" class="nav-link">Products</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#gallery" class="nav-link">Gallery</a></li>
-        <li><a href="#music" class="nav-link">Music</a></li>
-        <li><a href="#teams" class="nav-link">Teams</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
+  <main>
+    <section id="home" class="hero">
       <div class="hero-content">
         <div class="hero-text">
-          <h1>Fuel Your Passion</h1>
-          <h2>Discover the Magic in Every Cup</h2>
+          <h2>Fuel Your Passion</h2>
+          <h3>Discover the Magic in Every Cup</h3>
           <p>Welcome to our coffee paradise, where every bean tells a story and every cup sparks joy.</p>
-          <div class="hero-buttons">
-            <a href="#" class="btn btn-primary">Order Online</a>
-            <a href="#" class="btn btn-outline">Book A Table</a>
+          <div class="buttons">
+            <button class="btn primary">Order Online</button>
+            <button class="btn secondary">Book A Table</button>
           </div>
         </div>
         <div class="hero-image">
           <img src="images/cofffee_image.png" alt="Coffee">
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Products Section -->
-  <section class="section" id="products">
-    <div class="container">
-      <h2 class="section-title">Our Products</h2>
-      <div class="products" id="productContainer"></div>
-    </div>
-  </section>
+    <section id="products" class="products">
+      <h2>Our Products</h2>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
 
-  <!-- Rest of your sections... -->
+    <section id="about" class="about">
+      <h2>About Us</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>We at Coffee House, located in Kathmandu, Nepal, are one of the favorite hangouts for coffee and conversations. Our goal is to offer the best experience to our guests.</p>
+        </div>
+        <div class="about-image">
+          <img src="images/about_coffee.png" alt="About Coffee">
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <h2>Our Services</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <img src="images/hot_beverages.png" alt="Hot Beverages">
+          <h3>Hot Beverages</h3>
+          <p>Wide range of steaming hot coffees to make you fresh and light.</p>
+        </div>
+        <div class="service-card">
+          <img src="images/cold_beverages.png" alt="Cold Beverages">
+          <h3>Cold Beverages</h3>
+          <p>Creamy and frothy cold coffee to make you feel cool from inside.</p>
+        </div>
+        <div class="service-card">
+          <img src="images/dessert.png" alt="Desserts">
+          <h3>Desserts</h3>
+          <p>Delicious treats to complement your coffee experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="images/gallery_1.jpg" alt="Gallery Image">
+        <img src="images/gallery_2.jpg" alt="Gallery Image">
+        <img src="images/gallery_3.jpg" alt="Gallery Image">
+        <img src="images/gallery_4.jpg" alt="Gallery Image">
+        <img src="images/gallery_5.jpg" alt="Gallery Image">
+        <img src="images/gallery_6.jpg" alt="Gallery Image">
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-content">
+        <form id="contactForm">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn primary">Send Message</button>
+        </form>
+        <div class="contact-info">
+          <div class="info-item">
+            <i class="bx bx-map"></i>
+            <p>Kathmandu, Nepal</p>
+          </div>
+          <div class="info-item">
+            <i class="bx bx-phone"></i>
+            <p>+977-9826872664</p>
+          </div>
+          <div class="info-item">
+            <i class="bx bx-envelope"></i>
+            <p>info@ssblucky7.com</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images/coffee_logo.png" alt="Coffee Logo">
+        <h2>Coffee</h2>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="bx bxl-facebook"></i></a>
+          <a href="#"><i class="bx bxl-instagram"></i></a>
+          <a href="#"><i class="bx bxl-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Coffee Shop. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>

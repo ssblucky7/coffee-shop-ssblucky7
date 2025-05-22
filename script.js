@@ -1,78 +1,83 @@
-// Mobile Navigation
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
+// Mobile Menu
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
 
-navToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
-  navToggle.querySelector('i').classList.toggle('bx-menu');
-  navToggle.querySelector('i').classList.toggle('bx-x');
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  menuBtn.querySelector('i').classList.toggle('bx-x');
 });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-    navMenu.classList.remove('active');
-    navToggle.querySelector('i').classList.add('bx-menu');
-    navToggle.querySelector('i').classList.remove('bx-x');
-  }
+// Close menu when clicking a link
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    menuBtn.querySelector('i').classList.remove('bx-x');
+  });
 });
 
-// Products
+// Products Data
 const products = [
   {
     name: 'Lassi',
-    image: 'https://mediumturquoise-quail-576076.hostingersite.com/wp-content/uploads/2024/07/lassi.png',
+    image: 'images/lassi.png',
     price: 5,
     description: 'Traditional yogurt-based drink'
   },
   {
     name: 'Desi-Chai',
-    image: 'https://mediumturquoise-quail-576076.hostingersite.com/wp-content/uploads/2024/07/tea.png',
+    image: 'images/tea.png',
     price: 5,
     description: 'Traditional Indian spiced tea'
   },
   {
     name: 'Coffee',
-    image: 'https://mediumturquoise-quail-576076.hostingersite.com/wp-content/uploads/2024/07/coffee.png',
+    image: 'images/coffee.png',
     price: 5,
     description: 'Premium brewed coffee'
   }
 ];
 
-// Render products
-const productContainer = document.getElementById('productContainer');
+// Render Products
+const productGrid = document.getElementById('productGrid');
 
 products.forEach(product => {
-  const productCard = document.createElement('div');
-  productCard.classList.add('product-card');
+  const card = document.createElement('div');
+  card.className = 'product-card';
   
-  productCard.innerHTML = `
-    <img src="${product.image}" alt="${product.name}" class="product-image">
+  card.innerHTML = `
+    <img src="${product.image}" alt="${product.name}">
     <div class="product-info">
-      <h3 class="product-title">${product.name}</h3>
-      <p class="product-description">${product.description}</p>
-      <p class="product-price">$${product.price}</p>
-      <button class="btn btn-primary">Add to Cart</button>
+      <h3>${product.name}</h3>
+      <p>${product.description}</p>
+      <p class="price">$${product.price}</p>
+      <button class="btn primary">Add to Cart</button>
     </div>
   `;
   
-  productContainer.appendChild(productCard);
+  productGrid.appendChild(card);
 });
 
-// Smooth scrolling for navigation links
+// Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+  anchor.addEventListener('click', function(e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+      window.scrollTo({
+        top: target.offsetTop - 70,
+        behavior: 'smooth'
       });
-      // Close mobile menu after clicking
-      navMenu.classList.remove('active');
-      navToggle.querySelector('i').classList.add('bx-menu');
-      navToggle.querySelector('i').classList.remove('bx-x');
     }
   });
 });
+
+// Contact Form
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+    alert('Message sent successfully!');
+    contactForm.reset();
+  });
+}
