@@ -1,48 +1,78 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const products = [
-      {
-        name: 'Lassi',
-        image: 'https://mediumturquoise-quail-576076.hostingersite.com/wp-content/uploads/2024/07/lassi.png',
-        price: 5,
-        backgroundColor: '#03A9F4'
-      },
-      {
-        name: 'Desi-Chai (Tea)',
-        image: 'https://mediumturquoise-quail-576076.hostingersite.com/wp-content/uploads/2024/07/tea.png',
-        price: 5,
-        backgroundColor: '#E91E63'
-      },
-      {
-        name: 'Coffee',
-        image: 'https://mediumturquoise-quail-576076.hostingersite.com/wp-content/uploads/2024/07/coffee.png',
-        price: 5,
-        backgroundColor: '#9BDC28'
-      }
-      // Add more products as needed
-    ];
+// Mobile Navigation
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+
+navToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+  navToggle.querySelector('i').classList.toggle('bx-menu');
+  navToggle.querySelector('i').classList.toggle('bx-x');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+    navMenu.classList.remove('active');
+    navToggle.querySelector('i').classList.add('bx-menu');
+    navToggle.querySelector('i').classList.remove('bx-x');
+  }
+});
+
+// Products
+const products = [
+  {
+    name: 'Lassi',
+    image: 'https://mediumturquoise-quail-576076.hostingersite.com/wp-content/uploads/2024/07/lassi.png',
+    price: 5,
+    description: 'Traditional yogurt-based drink'
+  },
+  {
+    name: 'Desi-Chai',
+    image: 'https://mediumturquoise-quail-576076.hostingersite.com/wp-content/uploads/2024/07/tea.png',
+    price: 5,
+    description: 'Traditional Indian spiced tea'
+  },
+  {
+    name: 'Coffee',
+    image: 'https://mediumturquoise-quail-576076.hostingersite.com/wp-content/uploads/2024/07/coffee.png',
+    price: 5,
+    description: 'Premium brewed coffee'
+  }
+];
+
+// Render products
+const productContainer = document.getElementById('productContainer');
+
+products.forEach(product => {
+  const productCard = document.createElement('div');
+  productCard.classList.add('product-card');
   
-    const container = document.getElementById('product-count');
+  productCard.innerHTML = `
+    <img src="${product.image}" alt="${product.name}" class="product-image">
+    <div class="product-info">
+      <h3 class="product-title">${product.name}</h3>
+      <p class="product-description">${product.description}</p>
+      <p class="product-price">$${product.price}</p>
+      <button class="btn btn-primary">Add to Cart</button>
+    </div>
+  `;
   
-    products.forEach(product => {
-      const card = document.createElement('div');
-      card.classList.add('kard');
-  
-      card.innerHTML = `
-        <div class="imgbox">
-          <img class="image" src="${product.image}" alt="${product.name}">
-        </div>
-        <div class="contentbox">
-          <h2>${product.name}</h2>
-          <div class="price">
-            <h3>price :</h3>
-            <span>$</span><span>${product.price}</span>
-          </div>
-          <a href="#">Buy Now</a>
-        </div>
-      `;
-  
-      card.style.backgroundColor = product.backgroundColor;
-      container.appendChild(card);
-    });
+  productContainer.appendChild(productCard);
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      // Close mobile menu after clicking
+      navMenu.classList.remove('active');
+      navToggle.querySelector('i').classList.add('bx-menu');
+      navToggle.querySelector('i').classList.remove('bx-x');
+    }
   });
-  
+});
